@@ -7,8 +7,15 @@
   <body>
     <h1>Add a new pet to take care of !</h1>
     <form action="/pets" method="post">
-      <label for="name">Enter Name: </label>
-      <input id="name" name="name" type="text">
+      <!-- <label for="name">Enter Name: </label>
+      <input id="name" name="name" type="text"> -->
+
+      <select name="name">
+          <option value="pikachu">Pikachu</option>
+        <option value="unicorn">Unicorn</option>
+        <option value="charmander">Charmander</option>
+
+      </select>
       <button type="submit">Submit</button>
     </form>
   </body>

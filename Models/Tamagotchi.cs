@@ -8,6 +8,7 @@ namespace Tamagotchi.Models
         private int _id;
         private int _health;
         private int _age;
+        private string _isAlive;
         private static List<Pet> _instances = new List<Pet> {};
 
         public Pet(string name)
@@ -17,6 +18,7 @@ namespace Tamagotchi.Models
             _id = _instances.Count;
             _health = 100;
             _age = 1;
+            _isAlive = "Yes";
         }
 
     public string GetName()
@@ -39,15 +41,21 @@ namespace Tamagotchi.Models
       return _health;
     }
 
+    public void SetHealth(int health)
+    {
+        _health = health;
+    }
+
     public int GetAge()
     {
       return _age;
     }
 
-    public void Feed()
+    public void SetAge(int age)
     {
-        _health += 10;
+        _age = age;
     }
+    
 
     public void Play()
     {
@@ -78,6 +86,16 @@ namespace Tamagotchi.Models
     public static Pet Find(int searchId)
     {
       return _instances[searchId-1];
+    }
+
+    public string GetAlive ()
+    {
+        return _isAlive;
+    }
+
+    public void SetAlive (string isAlive)
+    {
+        _isAlive = isAlive;
     }
 
     }

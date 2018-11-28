@@ -1,14 +1,55 @@
-<h1>Your Pet Details: </h1>
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Your Pet Details: </h1>
+        @if(@Model.GetName()== "pikachu" && @Model.GetHealth()>0)
+        {
+        <img src="https://vignette.wikia.nocookie.net/youtubepoop/images/f/f7/5Pikachu.png/revision/latest?cb=20141108062013">
+        } else if(@Model.GetName()== "pikachu" && @Model.GetHealth()<=0)
+        {
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq5t2N01QG9Zk7lNY1IoRdIHNmp1IjHSrJ0VeBbXL-gltS2ciNaQ">  
+        }
 
-<h2>Name: @Model.GetName()</h2>
-<h2>Health: @Model.GetHealth()</h2>
-<h2>Age: @Model.GetAge()</h2>
-<h2>ID: @Model.GetId()</h2>
 
-<button>Feed Your Pet</button>
-<button>Play with Your Pet</button>
-<button>Let your Pet Sleep</button>
-<button>Pass Time</button>
+        @if(@Model.GetName()=="unicorn" && @Model.GetHealth()>0)
+        {
+        <img src="https://www.sololearn.com/avatars/387ecf68-71b0-400c-89cb-2a959ed8d4f8.jpg">
+        } else if(@Model.GetName()=="unicorn" && @Model.GetHealth()<=0)
+        {
+        <img src="https://rfclipart.com/image2/preview/ea-30-ae/dead-unicorn-Download-Royalty-free-Vector-File-EPS-320294.jpg">  
+        }
 
-<a href='/pets/new'>Add another pet</a><br>
-<a href='/pets'>View all pets</a>
+
+        @if(@Model.GetName()=="charmander" && @Model.GetHealth()>0)
+        {
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyB2ToK9XA3AzvQTwnVsynb_phisOtQni4t_zcilkXLOCYMyQ">
+        } else if(@Model.GetName()=="charmander" && @Model.GetHealth()<=0)
+        {
+        <img src="https://media1.tenor.com/images/7a27a55c5cf73af8ffc0968aed28a6a8/tenor.gif?itemid=12246997">  
+        }
+
+
+
+        <h2>Name: @Model.GetName()</h2>
+        <h2>Health: @Model.GetHealth()</h2>
+        <h2>Age: @Model.GetAge()</h2>
+        <h2>ID: @Model.GetId()</h2>
+        <h2>Status: @Model.GetAlive()</h2>
+
+    <form action="/pets/food/@Model.GetId()" method="post">
+      <button type="submit">Feed</button>
+    </form>        
+   <form action="/pets/rest/@Model.GetId()" method="post">
+      <button type="submit">Rest</button>
+    </form>    
+    <form action="/pets/time/@Model.GetId()" method="post">
+      <button type="submit">Pass Time</button>
+    </form>    
+           
+        <br>
+        <br>
+
+        <a href='/pets/new'>Add another pet</a><br>
+        <a href='/pets'>View all pets</a>
+    </body>
+</html>

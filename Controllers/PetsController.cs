@@ -29,10 +29,43 @@ namespace Tamagotchi.Controllers
         }
 
         [HttpGet("/pets/{id}")]
-    public ActionResult Show(int id)
-    {
-      Pet pet = Pet.Find(id);
-      return View(pet);
-    }
+        public ActionResult Show(int id)
+        {
+        Pet pet = Pet.Find(id);
+        return View(pet);
+        }
+     [HttpPost("/pets/food/{id}")]
+        public ActionResult UpdateFood(int id)
+        {
+            Pet pet = Pet.Find(id);
+            pet.SetHealth(pet.GetHealth()+10);
+            return View("Show", pet);
+        }
+
+        [HttpPost("/pets/rest/{id}")]
+        public ActionResult UpdateSleep(int id)
+        {
+            Pet pet = Pet.Find(id);
+            pet.SetHealth(pet.GetHealth()+10);
+            return View("Show", pet);
+        }
+
+        [HttpPost("/pets/time/{id}")]
+        public ActionResult UpdateAge(int id)
+        {
+            Pet pet = Pet.Find(id);
+            pet.SetAge(pet.GetAge()+1);
+            pet.SetHealth(pet.GetHealth()-10);
+            if (pet.GetHealth() <= 0)
+            {
+                pet.SetAlive("dead");
+            }
+
+            if (pet.GetAge() >= 10)
+            {
+                pet.SetAlive("Your pet is OLD");
+            }
+            return View("Show", pet);
+        }
     }
 }
